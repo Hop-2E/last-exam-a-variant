@@ -4,6 +4,7 @@ import axios from "axios";
 import { EditIcon, DeleteIcon } from "./icons/icons";
 
 function App() {
+
   const [list, setList] = useState([
     { text: "example data", isDone: true, _id: "anyid" },
   ]);
@@ -15,7 +16,7 @@ function App() {
     if (!inputValue) return;
 
     console.log(inputValue);
-    //axios.patch()
+    const 
   };
 
   const Delete = (_id) => {
@@ -30,17 +31,17 @@ function App() {
 
   const toggleDone = (_id, isDone) => {
     console.log(_id, isDone);
-    //axios.patch()
+    
   };
 
   useEffect(() => {
-    // axios
-    //   .get("Your backend URL")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     setList(data.data);
-    //   });
+    axios
+      .get("Your backend URL")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setList(data.data);
+      });
   }, []);
 
   return (
