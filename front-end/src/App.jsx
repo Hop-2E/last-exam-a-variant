@@ -63,15 +63,15 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    // axios
-    //   .get("Your backend URL")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     setList(data.data);
-    //   });
-  }, []);
+  // useEffect(() => {
+  //   // axios
+  //   //   .get("Your backend URL")
+  //   //   .then((response) => response.json())
+  //   //   .then((data) => {
+  //   //     console.log(data);
+  //   //     setList(data.data);
+  //   //   });
+  // }, []);
   console.log(data);
   return (
     <div className="container">
