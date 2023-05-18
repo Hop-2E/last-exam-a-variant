@@ -25,5 +25,8 @@
     "hooks": {
       "pre-commit": "bash .husky/pre-commit"
     }
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
