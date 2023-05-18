@@ -16,7 +16,7 @@ function App() {
     if (!inputValue) return;
 
     console.log(inputValue);
-    const 
+    
   };
 
   const Delete = (_id) => {
