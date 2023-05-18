@@ -4,36 +4,59 @@ import axios from "axios";
 import { EditIcon, DeleteIcon } from "./icons/icons";
 
 function App() {
+  const instance = axios.create({
+    baseURL: "http://localhost:5000",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  });
+
   const [list, setList] = useState([
     { text: "example data", isDone: true, _id: "anyid" },
   ]);
   const [checkedCounter, setCheckedCounter] = useState(0);
   const [addTodo, setAddTodo] = useState("");
 
+  const getList = async () => {
+    const res = await instance.get("/todos");
+    setList(res.data.data);
+    console.log(res.data.data);
+  }
+
   const Edit = (_id, text) => {
     const inputValue = window.prompt("Edit", text);
     if (!inputValue) return;
-
+    instance.patch(`/todos/${_id}`, {
+      _id: _id,
+      text: inputValue,
+    });
+    console.log(text);
     console.log(inputValue);
     //axios.patch()
   };
 
   const Delete = (_id) => {
+    instance.delete(`/todos/${_id}`, {
+      _id: _id,
+    });
     console.log(_id);
-    // axios.delete();
   };
 
   const Add = () => {
+    instance.post ('/todos', {
+      text: addTodo,
+    })
     console.log(addTodo);
-    // axios.post();
   };
 
   const toggleDone = (_id, isDone) => {
+    
     console.log(_id, isDone);
     //axios.patch()
   };
 
   useEffect(() => {
+    getList();
     // axios
     //   .get("Your backend URL")
     //   .then((response) => response.json())
@@ -41,7 +64,7 @@ function App() {
     //     console.log(data);
     //     setList(data.data);
     //   });
-  }, []);
+  }, [list]);
 
   return (
     <div className="container">
@@ -76,7 +99,10 @@ function App() {
           placeholder="what's next?"
           onChange={(e) => setAddTodo(e.target.value)}
         />
-        <div className="button" onClick={() => Add()}>
+        <div 
+          className="button" 
+          onClick={() => Add()}
+        >
           Add task
         </div>
       </div>
