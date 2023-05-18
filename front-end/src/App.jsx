@@ -2,6 +2,13 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 import { EditIcon, DeleteIcon } from "./icons/icons";
+export const instance = axios.create({
+  baseURL: "http://localhost:5000",
+  headers: {
+    "Content-type": "application/json; charset=UTF-8",
+  },
+});
+
 
 function App() {
   const [list, setList] = useState([
@@ -9,6 +16,14 @@ function App() {
   ]);
   const [checkedCounter, setCheckedCounter] = useState(0);
   const [addTodo, setAddTodo] = useState("");
+
+  const getList = async () => {
+    const res = await instance.get(`/Post`);
+    setList(res.data.data);
+  };
+  useEffect(() => {
+    getList();
+  }, []);
 
   const Edit = (_id, text) => {
     const inputValue = window.prompt("Edit", text);
@@ -23,10 +38,13 @@ function App() {
     // axios.delete();
   };
 
-  const Add = () => {
+  const Add = async() => {
+    const res = await instance.get(`/Post`);
+    setAddTodo(res.addTodo);
     console.log(addTodo);
-    // axios.post();
   };
+
+
 
   const toggleDone = (_id, isDone) => {
     console.log(_id, isDone);
@@ -35,12 +53,12 @@ function App() {
 
   useEffect(() => {
     // axios
-    //   .get("Your backend URL")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     setList(data.data);
-    //   });
+     //  .get("Your backend URL")
+     //  .then((response) => response.json())
+      // .then((data) => {
+       //  console.log(data);
+       //  setList(data.data);
+      // });
   }, []);
 
   return (
@@ -60,7 +78,7 @@ function App() {
                 defaultChecked={isDone}
                 onChange={() => toggleDone(_id, isDone)}
               />
-              <div>{text}</div>
+              <div>{text}sdc<input type="date"/></div>
             </div>
             <div className="actions">
               <div onClick={() => Edit(_id, text)}>
