@@ -3,30 +3,48 @@ import "./App.css";
 import axios from "axios";
 import { EditIcon, DeleteIcon } from "./icons/icons";
 
+
+
+export const instance = axios.create({
+  baseURL: "http://localhost:4000",
+  headers: {
+    "Authorization": "authorizationToken",
+    "Content-type": "application/json; charset=UTF-8",
+  },
+  
+});
+
 function App() {
-  const [list, setList] = useState([
-    { text: "example data", isDone: true, _id: "anyid" },
-  ]);
+
+  const [list, setList] = useState([]);
   const [checkedCounter, setCheckedCounter] = useState(0);
   const [addTodo, setAddTodo] = useState("");
+  const [addUpdate, setUpdate] = useState("")
 
-  const Edit = (_id, text) => {
+  const Edit = async (_id, text) => {
     const inputValue = window.prompt("Edit", text);
-    if (!inputValue) return;
+    const res = await instance.patch(`/todo/${_id}`,{
+      text : inputValue
+    })
+  }
 
-    console.log(inputValue);
-    //axios.patch()
+  const Delete = async (_id) => {
+    const res = await instance.delete(`/todo/${_id}`)}
+
+  const getData = async () => {
+    const res = await instance.get("/todo");
+    setList(res.data.data);
+    console.log(res)
   };
 
-  const Delete = (_id) => {
-    console.log(_id);
-    // axios.delete();
-  };
 
-  const Add = () => {
-    console.log(addTodo);
-    // axios.post();
+  const Add = async () => {
+    const res = await instance.post("/todo", {
+      text: addTodo,
+    });
+
   };
+  
 
   const toggleDone = (_id, isDone) => {
     console.log(_id, isDone);
@@ -34,14 +52,11 @@ function App() {
   };
 
   useEffect(() => {
-    // axios
-    //   .get("Your backend URL")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     setList(data.data);
-    //   });
-  }, []);
+      getData()
+  }, [Add]);
+
+  
+ 
 
   return (
     <div className="container">
@@ -81,7 +96,7 @@ function App() {
         </div>
       </div>
     </div>
-  );
-}
+  );}
+
 
 export default App;
