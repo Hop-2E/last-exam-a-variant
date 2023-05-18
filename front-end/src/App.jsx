@@ -2,11 +2,18 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 import { EditIcon, DeleteIcon } from "./icons/icons";
+export const instance = axios.create({
+  baseURL: "http://localhost:5000",
+  headers: {
+    "Content-type": "application/json; charset=UTF-8",
+  },
+});
 
 function App() {
   const [list, setList] = useState([
     { text: "example data", isDone: true, _id: "anyid" },
   ]);
+  
   const [checkedCounter, setCheckedCounter] = useState(0);
   const [addTodo, setAddTodo] = useState("");
 
@@ -49,6 +56,9 @@ function App() {
         <div>My Todo list</div>
         <div className="count">
           {checkedCounter}/{list.length}
+        </div>
+        <div>
+
         </div>
       </div>
       <div className="list">
