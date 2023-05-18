@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import router from "./router/task.js";
 import cors from "cors";
+
 const mongo =
   "mongodb+srv://tuguldurExam:Mehhh99757057@cluster0.oncmbqa.mongodb.net/";
 const port = 5000;
