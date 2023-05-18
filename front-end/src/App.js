@@ -1,47 +1,78 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import axios from "axios";
 import { EditIcon, DeleteIcon } from "./icons/icons";
-
+export const instance = axios.create({
+  baseURL: "http://localhost:4900//",
+  headers: {
+    "Content-type": "application/json; charset=UTF-8",
+  },
+});
 function App() {
   const [list, setList] = useState([
     { text: "example data", isDone: true, _id: "anyid" },
   ]);
+  const listRef = useRef();
   const [checkedCounter, setCheckedCounter] = useState(0);
   const [addTodo, setAddTodo] = useState("");
+  const [check, setCheck] = useState();
+  const getData = async () => {
+    const res = await instance.get("/todolist/list");
+    setList(
+      res.data.data.map((el) => {
+        return el;
+      })
+    );
 
-  const Edit = (_id, text) => {
+    console.log(res);
+  };
+  const Edit = async (_id, text) => {
     const inputValue = window.prompt("Edit", text);
-    if (!inputValue) return;
+    if (inputValue) {
+      const res = await instance.patch("/todolist/update", {
+        _id: _id,
+        list: inputValue,
+      });
+      console.log(res);
+      setList(list.filter((curritem) => curritem.list == res.data.data.list));
+    }
 
-    console.log(inputValue);
     //axios.patch()
   };
 
-  const Delete = (_id) => {
-    console.log(_id);
-    // axios.delete();
+  const Delete = async (_id) => {
+    const res = await instance.delete(`/todolist/delete/${_id}`);
+    setList((currItem) =>
+      currItem.filter((item) => item._id !== res.data.data._id)
+    );
   };
 
-  const Add = () => {
-    console.log(addTodo);
-    // axios.post();
+  const Add = async () => {
+    const res = await instance.post("/todolist/add", {
+      list: listRef.current.value,
+    });
+    setList((prevList) => [...prevList, res.data.data]);
   };
 
-  const toggleDone = (_id, isDone) => {
+  const toggleDone = async (_id, isDone) => {
     console.log(_id, isDone);
+    const res = await instance.patch("/todolist/checked", {
+      _id: _id,
+      status: !isDone,
+    });
     //axios.patch()
   };
 
   useEffect(() => {
+    getData();
     // axios
     //   .get("Your backend URL")
     //   .then((response) => response.json())
     //   .then((data) => {
     //     console.log(data);
-    //     setList(data.data);
+    //     setList(tdaa.data);
     //   });
-  }, []);
+  }, [list]);
 
   return (
     <div className="container">
@@ -52,18 +83,18 @@ function App() {
         </div>
       </div>
       <div className="list">
-        {list.map(({ text, _id, isDone }, index) => (
+        {list.map(({ list, _id, status }, index) => (
           <div className="todo" key={index}>
             <div className="checkbox">
               <input
                 type={"checkbox"}
-                defaultChecked={isDone}
-                onChange={() => toggleDone(_id, isDone)}
+                defaultChecked={status}
+                onChange={() => toggleDone(_id, status)}
               />
-              <div>{text}</div>
+              <div>{list}</div>
             </div>
             <div className="actions">
-              <div onClick={() => Edit(_id, text)}>
+              <div onClick={() => Edit(_id, list)}>
                 <EditIcon />
               </div>
               <div onClick={() => Delete(_id)}>
@@ -72,10 +103,7 @@ function App() {
             </div>
           </div>
         ))}
-        <input
-          placeholder="what's next?"
-          onChange={(e) => setAddTodo(e.target.value)}
-        />
+        <input placeholder="what's next?" ref={listRef} />
         <div className="button" onClick={() => Add()}>
           Add task
         </div>

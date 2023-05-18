@@ -6,37 +6,37 @@
 
 ## A variant
 
-- `GET http://localhost:5000` руу хандахад ‘Todo list backend’ гэж буцаах. / 1 оноо /
+<!-- - `GET http://localhost:5000` руу хандахад ‘Todo list backend’ гэж буцаах. / 1 оноо /
 - `GET http://localhost:5000/test` руу хандахад ‘This is test endpoint’ гэж буцаах. / 1 оноо /
-- Mongodb-тэй холбох terminal дээр `Successfully connected mongodb` гэж харуулах / 5 оноо /
-- Task schema үүсгэх
+- Mongodb-тэй холбох terminal дээр `Successfully connected mongodb` гэж харуулах / 5 оноо / -->
+<!-- - Task schema үүсгэх
   - text : string / 1 оноо /
   - isDone : boolean, default: false / 1 оноо /
-  - createdDate: date / 1 оноо /
-- `GET http://localhost:5000/list` руу хандахад list-ийг array болгож буцаана.
+  - createdDate: date / 1 оноо / -->
+<!-- - `GET http://localhost:5000/list` руу хандахад list-ийг array болгож буцаана.
   - Endpoint руу хандахад ямар нэг юм буцаадаг байна. / 1 оноо /
   - Mongoose query бичсэн байна. / 1 оноо /
-  - Query-ээс авсан утгаа буцаана. / 1 оноо /
+  - Query-ээс авсан утгаа буцаана. / 1 оноо / -->
 - `GET http://localhost:5000/count` руу хандахад isDone task-уудын тоог буцаана.
   - Endpoint руу хандахад ямар нэг юм буцаадаг байна / 1 оноо /
   - Mongoose query бичсэн байна. / 1 оноо /
   - Query-ээс авсан утгаа буцаана. / 1 оноо /
-- `POST http://localhost:5000/add` руу post хүсэлт тавьж task нэмнэ.
+<!-- - `POST http://localhost:5000/add` руу post хүсэлт тавьж task нэмнэ.
   - Endpoint руу хандахад ямар нэг юм буцаадаг байна. / 1 оноо /
   - Mongoose query бичсэн байна. / 1 оноо /
-  - Query-ээс авсан утгаа буцаана. / 1 оноо /
-- `DELETE http://localhost:5000/delete` руу delete хүсэлтээр task устгана. Header дээр id дамжуулна.
+  - Query-ээс авсан утгаа буцаана. / 1 оноо / -->
+<!-- - `DELETE http://localhost:5000/delete` руу delete хүсэлтээр task устгана. Header дээр id дамжуулна.
   - Endpoint руу хандахад ямар нэг юм буцаадаг байна. / 1 оноо /
   - Mongoose query бичсэн байна. / 1 оноо /
-  - Query-ээс авсан утгаа буцаана. / 1 оноо /
-- `PATCH http://localhost:5000/update` руу patch хүсэлт явуулж text-ээ засна.
+  - Query-ээс авсан утгаа буцаана. / 1 оноо / -->
+<!-- - `PATCH http://localhost:5000/update` руу patch хүсэлт явуулж text-ээ засна.
   - Endpoint руу хандахад ямар нэг юм буцаадаг байна. / 1 оноо /
   - Mongoose query бичсэн байна. / 1 оноо /
-  - Query-ээс авсан утгаа буцаана. / 1 оноо /
-- `PATCH http://localhost:5000/checked` руу хүсэлт явуулж isDone утгыг солино.
+  - Query-ээс авсан утгаа буцаана. / 1 оноо / -->
+<!-- - `PATCH http://localhost:5000/checked` руу хүсэлт явуулж isDone утгыг солино.
   - Endpoint руу хандахад ямар нэг юм буцаадаг байна / 1 оноо /
   - Mongoose query бичсэн байна. / 1 оноо /
-  - Query-ээс авсан утгаа буцаана. / 1 оноо /
+  - Query-ээс авсан утгаа буцаана. / 1 оноо / -->
 - Router ashiglasan eseh / 3 оноо /
 - Frontend холбох / 7 оноо /
     
