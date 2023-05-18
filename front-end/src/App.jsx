@@ -56,7 +56,7 @@ function App() {
     console.log(_id, isDone);
     try {
       instance.patch(`/checked/${_id}`, {
-        isDone: isDone,
+        isDone: !isDone,
       });
     } catch (error) {
       alert(error.response.data.data);
