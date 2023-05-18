@@ -26,4 +26,5 @@
       "pre-commit": "bash .husky/pre-commit"
     }
   }
+ 
 }
