@@ -6,7 +6,7 @@
 
 ## A variant
 
-- `GET http://localhost:5000` руу хандахад ‘Todo list backend’ гэж буцаах. / 1 оноо /
+<!-- - `GET http://localhost:5000` руу хандахад ‘Todo list backend’ гэж буцаах. / 1 оноо /
 - `GET http://localhost:5000/test` руу хандахад ‘This is test endpoint’ гэж буцаах. / 1 оноо /
 - Mongodb-тэй холбох terminal дээр `Successfully connected mongodb` гэж харуулах / 5 оноо /
 - Task schema үүсгэх
@@ -15,9 +15,9 @@
   - createdDate: date / 1 оноо /
 - `GET http://localhost:5000/list` руу хандахад list-ийг array болгож буцаана.
   - Endpoint руу хандахад ямар нэг юм буцаадаг байна. / 1 оноо /
-  - Mongoose query бичсэн байна. / 1 оноо /
-  - Query-ээс авсан утгаа буцаана. / 1 оноо /
-- `GET http://localhost:5000/count` руу хандахад isDone task-уудын тоог буцаана.
+  - Mongoose query бичсэн байна. / 1 оноо / -->
+  <!-- - Query-ээс авсан утгаа буцаана. / 1 оноо / -->
+<!-- - `GET http://localhost:5000/count` руу хандахад isDone task-уудын тоог буцаана.
   - Endpoint руу хандахад ямар нэг юм буцаадаг байна / 1 оноо /
   - Mongoose query бичсэн байна. / 1 оноо /
   - Query-ээс авсан утгаа буцаана. / 1 оноо /
@@ -38,12 +38,12 @@
   - Mongoose query бичсэн байна. / 1 оноо /
   - Query-ээс авсан утгаа буцаана. / 1 оноо /
 - Router ashiglasan eseh / 3 оноо /
-- Frontend холбох / 7 оноо /
+- Frontend холбох / 7 оноо / -->
     
   Дараах endpoint-уудыг frontend дээр ашигласан байх
   
   - `GET http://localhost:5000/list` / 1 оноо /
-  - `GET http://localhost:5000/count` / 1 оноо / 
+  - `GET http://localhost:5000/count` / 1 оноо /
   - `GET http://localhost:5000/add` / 1 оноо /
   - `GET http://localhost:5000/delete` / 1 оноо / 
   - `GET http://localhost:5000/checked` / 1 оноо / 
