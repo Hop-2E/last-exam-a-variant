@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
-import "./App.css";
-import axios from "axios";
-import { EditIcon, DeleteIcon } from "./icons/icons";
+import { useEffect, useState } from 'react';
+import './App.css';
+import axios from 'axios';
+import { EditIcon, DeleteIcon } from './icons/icons';
 
 function App() {
   const [list, setList] = useState([
-    { text: "example data", isDone: true, _id: "anyid" },
+    { text: 'example data', isDone: true, _id: 'anyid' },
   ]);
   const [checkedCounter, setCheckedCounter] = useState(0);
-  const [addTodo, setAddTodo] = useState("");
+  const [addTodo, setAddTodo] = useState('');
 
   const Edit = (_id, text) => {
-    const inputValue = window.prompt("Edit", text);
+    const inputValue = window.prompt('Edit', text);
     if (!inputValue) return;
 
     console.log(inputValue);
@@ -56,7 +56,7 @@ function App() {
           <div className="todo" key={index}>
             <div className="checkbox">
               <input
-                type={"checkbox"}
+                type={'checkbox'}
                 defaultChecked={isDone}
                 onChange={() => toggleDone(_id, isDone)}
               />
